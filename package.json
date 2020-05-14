@@ -1,8 +1,8 @@
 {
   "name": "localized-time",
   "version": "1.0.0",
-  "main": "index.js",
-  "author": "<matt@gatsbyjs.com>",
+  "main": "dist/index.js",
+  "author": "<m@mk.gg>",
   "license": "MIT",
   "scripts": {
     "build": "tsc",
