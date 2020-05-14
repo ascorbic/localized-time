@@ -25,24 +25,29 @@ export const LocalizedTime: React.FC<Props> = ({
 }) => {
   const [dateString, setDateString] = useState<string>("");
   useEffect(() => {
-    if (!dateTime) {
+    if (!dateTime || !("Intl" in window)) {
       return;
     }
-    const formatter = new Intl.DateTimeFormat(locales, {
-      ...defaultOptions,
-      ...options,
-    });
 
-    const date = new Date(dateTime);
-    if (!date) {
-      setDateString("");
+    try {
+      const formatter = new Intl.DateTimeFormat(locales, {
+        ...defaultOptions,
+        ...options,
+      });
+      const date = new Date(dateTime);
+      if (!date) {
+        setDateString("");
+        return;
+      }
+      setDateString(formatter.format(date));
+    } catch (e) {
+      console.warn(e);
     }
-    setDateString(formatter.format(date));
   }, [locales, options, dateTime]);
 
   return (
     <time {...props} dateTime={dateTime}>
-      {dateString && append ? [children, separator, dateString] : dateString}
+      {[append && dateString && [children, separator], dateString || children]}
     </time>
   );
 };
