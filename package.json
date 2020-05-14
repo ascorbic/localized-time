@@ -1,6 +1,6 @@
 {
   "name": "react-localized-time",
-  "version": "0.0.1-pre.1",
+  "version": "0.0.1",
   "main": "dist/index.js",
   "author": "<m@mk.gg>",
   "license": "MIT",
