@@ -23,25 +23,22 @@ export const LocalizedTime: React.FC<Props> = ({
   locales,
   ...props
 }) => {
-  const [formatter, setFormatter] = useState<Intl.DateTimeFormat>();
   const [dateString, setDateString] = useState<string>("");
   useEffect(() => {
-    setFormatter(
-      new Intl.DateTimeFormat(locales, { ...defaultOptions, ...options })
-    );
-  }, [locales, options]);
-
-  useEffect(() => {
-    if (!dateTime || !formatter) {
+    if (!dateTime) {
       return;
     }
+    const formatter = new Intl.DateTimeFormat(locales, {
+      ...defaultOptions,
+      ...options,
+    });
+
     const date = new Date(dateTime);
     if (!date) {
       setDateString("");
     }
     setDateString(formatter.format(date));
-    console.log(date);
-  }, [formatter, dateTime]);
+  }, [locales, options, dateTime]);
 
   return (
     <time {...props} dateTime={dateTime}>
