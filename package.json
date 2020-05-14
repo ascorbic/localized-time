@@ -1,12 +1,19 @@
 {
-  "name": "localized-time",
-  "version": "1.0.0",
+  "name": "react-localized-time",
+  "version": "0.0.1-pre.1",
   "main": "dist/index.js",
   "author": "<m@mk.gg>",
   "license": "MIT",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "build": "tsc",
-    "start": "parcel example/index.html"
+    "build": "tsc -d",
+    "start": "parcel example/index.html",
+    "prepublishOnly": "yarn build"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0"
   },
   "devDependencies": {
     "@types/react": "^16.9.35",
