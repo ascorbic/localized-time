@@ -4,7 +4,7 @@ export interface Props extends TimeHTMLAttributes<HTMLTimeElement> {
   dateTime: string;
   append?: boolean;
   options?: Intl.DateTimeFormatOptions;
-  locales?: string | string[];
+  locale?: string;
   separator?: string;
 }
 
@@ -20,7 +20,7 @@ export const LocalizedTime: React.FC<Props> = ({
   append = true,
   options = {},
   separator = " / ",
-  locales,
+  locale,
   ...props
 }) => {
   const [dateString, setDateString] = useState<string>("");
@@ -31,7 +31,7 @@ export const LocalizedTime: React.FC<Props> = ({
     }
 
     try {
-      const formatter = new Intl.DateTimeFormat(locales, {
+      const formatter = new Intl.DateTimeFormat(locale, {
         ...defaultOptions,
         ...options,
       });
@@ -45,7 +45,7 @@ export const LocalizedTime: React.FC<Props> = ({
     } catch (e) {
       console.warn(e);
     }
-  }, [locales, options, dateTime]);
+  }, [locale, options, dateTime]);
 
   return (
     <time {...props} dateTime={isoString || dateTime}>
