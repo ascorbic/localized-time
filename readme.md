@@ -15,9 +15,24 @@ import { LocalizedTime } from "react-localized-time";
 </p>;
 ```
 
+Or a more complicated version:
+
+```jsx
+<p>
+  Gatsby Days começa às{" "}
+  <LocalizedTime
+    dateTime="2020-06-01T18:00:00.000Z"
+    append={false}
+    options={{ timeZoneName: "long" }}
+  />
+</p>
+```
+
+[Try it out](https://codesandbox.io/s/react-localized-time-id0rz)
+
 The `dateTime` prop accepts any text that can be parsed by [the `Date` constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/Date#Syntax). (These formats are RFC 2822 and ISO8601).
 
-The component renders the `dateTime` value, transalted into the user's timezone and locale. By default the value is appended to the existing content of the tag, separated by " / ", so the example above would render as "Gatsby Days starts at 9am PST / 18:00 BST" in the UK.
+The component renders the `dateTime` value, translated into the user's timezone and locale. By default the value is appended to the existing content of the tag, separated by " / ", so the example above would render as "Gatsby Days starts at 9am PST / 18:00 BST" in the UK.
 
 ## Props
 
@@ -25,7 +40,7 @@ The component renders a [`<time>` element](https://developer.mozilla.org/en-US/d
 
 ### `dateTime`: `boolean`
 
-A date/time string in RFC 2822 or ISO8601 format. It must include a date as well as time so that it can calculate daylight sdaving time.
+A date/time string in RFC 2822 or ISO8601 format. It must include a date as well as time so that it can calculate daylight saving time.
 
 ### `append`?: `boolean`
 
@@ -47,7 +62,7 @@ Default:
 
 ### `locale`?: `string`
 
-You may specify a locale for the display, or leave as undefined which will use the user's locale. This does not affect the timezone, just the format.
+You may specify a locale for the display, or leave as undefined which will use the user's locale. This does not affect the timezone, just the format. e.g. `"en-US"`
 
 ### `separator`?: `string`
 
