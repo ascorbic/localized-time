@@ -2,6 +2,8 @@
 
 This is a component to display time translated to the user's timezone.
 
+[Try it out](https://codesandbox.io/s/react-localized-time-id0rz)
+
 At its simplest, you can use it like this:
 
 ```jsx
@@ -23,12 +25,11 @@ Or a more complicated version:
   <LocalizedTime
     dateTime="2020-06-01T18:00:00.000Z"
     append={false}
+    locale="pt-PT"
     options={{ timeZoneName: "long" }}
   />
 </p>
 ```
-
-[Try it out](https://codesandbox.io/s/react-localized-time-id0rz)
 
 The `dateTime` prop accepts any text that can be parsed by [the `Date` constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/Date#Syntax). (These formats are RFC 2822 and ISO8601).
 
@@ -62,7 +63,7 @@ Default:
 
 ### `locale`?: `string`
 
-You may specify a locale for the display, or leave as undefined which will use the user's locale. This does not affect the timezone, just the format. e.g. `"en-US"`
+e.g. `"en-US"`. You may specify a locale for the display, or leave as undefined which will use the user's locale. This does not affect the timezone, just the format and the language used for timezone names. 
 
 ### `separator`?: `string`
 
